@@ -1,0 +1,557 @@
+#
+# testez votre diagramme mermaid sur https://mermaid.live/edit
+#
+Acteurs:
+  NomProjet:
+    - Usine de développement
+  ContexteProjet: # commentaires sur le contexte
+    - "Contexte du Projet 1"
+    - "Contexte du Projet 2"
+  ObjectifsProjet: # précisez les objectifs métier
+    - Mon objectif projet 1
+    - Mon objectif projet 2
+  EnjeuxProjet:
+    - Mon enjeu projet 1
+    - Mon enjeu projet 2
+  PlanningProjet:
+    - Version: V1
+      Date: 12-2018
+      Description: ""
+    - Version: V2
+      Date: 06-2019
+      Description: ""
+  ActeursProjet:
+    - Rôle: Product Manager
+      Nom: ""
+      Entite: ""
+    - Rôle: Product Owner
+      Nom: ""
+      Entite: ""
+    - Rôle: Developpeur
+      Nom: ""
+      Entite: ""
+    - Rôle: SRE
+      Nom: ""
+      Entite: ""
+    - Rôle: Tech Lead
+      Nom: ""
+      Entite: "Fab Num"
+    - Rôle: Lead OPS
+      Nom: ""
+      Entite: "Fab Num"
+  ActeursMetier:
+    - Profils Utilisateurs: Acteur métier 1
+      MCAS: true
+      RIE: ""
+      EXT: ""
+      PUB: ""
+    - Profils Utilisateurs: Acteur métier 2
+      MCAS: ""
+      RIE: ""
+      EXT: ""
+      PUB: ""
+Fonctionnalites:
+  FonctionnalitesApplicatif:
+    - Fonctionnalités: Fonctionnalité 1
+      MCAS: true
+      RIE: ""
+      EXT: ""
+      PUB: ""
+    - Fonctionnalités: Fonctionnalité 2
+      MCAS: true
+      RIE: true
+      EXT: true
+      PUB: true
+  ReferentielsDonnees:
+    - Référentiel de données: Référentiel 1
+      Mode d'échange: Mode 1
+      MCAS: true
+      RIE: ""
+      EXT: ""
+      PUB: ""
+    - Référentiel de données: Référentiel 2
+      Mode d'échange: Mode 2
+      MCAS: true
+      RIE: ""
+      EXT: ""
+      PUB: ""
+  SensibiliteHaut:
+    - Très sensible: NIR
+      "": ""
+    - Très sensible: Médicales
+      "": ""
+    - Très sensible: Vie privée
+      "": ""
+    - Très sensible: Justice
+      "": ""
+    - Très sensible: Identité
+      "": ""
+    - Très sensible: Biométrique
+      "": ""
+    - Très sensible: Mécanisme de fraude
+      "": ""
+    - Très sensible: Architecture sécurité
+      "": ""
+    - Très sensible: Failles & vulnérabilités
+      "": ""
+    - Très sensible: Patrimoine
+      "": ""
+    - Très sensible: Appartenance syndicale
+      "": ""
+  SensibiliteMoyen:
+    - Sensible: Architecture technique
+      "": ""
+    - Sensible: Organisationnel
+      "": ""
+    - Sensible: Etat civil
+      "": ""
+    - Sensible: Adresse postale
+      "": ""
+    - Sensible: Vie personnelle
+      "": ""
+    - Sensible: Vie professionnelle
+      "": ""
+    - Sensible: Mouvements salariaux
+      "": ""
+    - Sensible: Santé économique
+      "": ""
+  SensibiliteBas:
+    - Public: Editoriaux
+      "": ""
+    - Public: Publication Extranet
+      "": ""
+    - Public: Campagne de communication
+      "": ""
+    - Public: Statistiques publiables
+      "": ""
+  ServicesConnexes:
+    - Service utilisé: Messagerie SMTP
+      Mode d'échange: API
+      MCAS: ""
+      RIE: ""
+      EXT: true
+      PUB: ""
+    - Service utilisé: exemple
+      Mode d'échange: Mode 1
+      MCAS: true
+      RIE: ""
+      EXT: ""
+      PUB: ""
+Contraintes:
+  ContraintesLegales:
+    - "": Contraintes légales 1
+    - "": Contraintes légales 2
+  ContraintesMetier:
+    - "": Contraintes métiers 1
+    - "": Contraintes métiers 2
+  NormesRegles:
+    - Sigle: RGS
+      Description: "Référentiel Général de Sécurité (https://www.ssi.gouv.fr/administration/reglementation/confiance-numerique/le-referentiel-general-de-securite-rgs/)"
+    - Sigle: RGI
+      Description: "Référentiel Général d’Interopérabilité (https://www.numerique.gouv.fr/publications/interoperabilite/)"
+    - Sigle: RGAA
+      Description: "Référentiel Général d’Accessibilité des Administrations (https://www.numerique.gouv.fr/publications/rgaa-accessibilite/)"
+  DependancesSI:
+    - NomSI: SI 1
+      Fournisseur: true
+      Consommateur: true
+    - NomSI: SI 2
+      Fournisseur: true
+      Consommateur: false
+  DependancesP2T:
+    - Composant: O.S.
+      Description: Pas de dépendance avec l'O.S. du terminal
+    - Composant: Bureautique
+      Description: Pas de dépendance avec la suite bureautique du terminal
+    - Composant: Navigateur
+      Description: Navigateur moderne type Chromium
+  VolumetrieDonnees:
+    - Information: Nombre d'enregistrement à récupérer
+      Valeur: Valeur D1
+    - Information: Nombre d'enregistrement / an
+      Valeur: Valeur D2
+    - Information: Taille moyenne enregistrement (KO)
+      Valeur: Valeur D3
+    - Information: Nombre d'années d'enregistrements en BDD
+      Valeur: Valeur D4
+    - Information: Volume BDD initial (GO)
+      Valeur: D5=(D1xD3)/1024²
+    - Information: Volume BDD annuel (GO)
+      Valeur: D6=(D2xD3)/1024²
+    - Information: Volume BDD TOTAL (GO)
+      Valeur: D7=(D4xD6)+D5
+  VolumetrieFichiers:
+    - Information: Nombre d'enregistremende fichiers à récupérer
+      Valeur: Valeur F1
+    - Information: Nombre de fichiers / an
+      Valeur: Valeur F2
+    - Information: Taille moyenne d'un fichier (MO)
+      Valeur: Valeur F3
+    - Information: Nombre d'années dde fichiers
+      Valeur: Valeur F4
+    - Information: Volume BDD initial (GO)
+      Valeur: F5=(F1xF3)/1024²
+    - Information: Volume BDD annuel (GO)
+      Valeur: F6=(F2xF3)/1024²
+    - Information: Volume BDD TOTAL (GO)
+      Valeur: F7=(F4xF6)+F5
+  ReductionVolumetrie:
+    - Information: Purge de données dans la BDD
+      Valeur: true
+    - Information: Purge de fichiers dans le FS
+      Valeur: false
+    - Information: Archivage des données hors SI
+      Valeur: true
+    - Information: Archivage des fichiers hors SI
+      Valeur: true
+Exigences:
+  DICT:
+    - NEROS: Exigence de disponibilité
+      Objectifs: D du DICT
+    - NEROS: Exigence d'intégrité
+      Objectifs: I du DICT
+    - NEROS: Exigence de confidentialité
+      Objectifs: C du DICT
+    - NEROS: Exigence de traçabilité
+      Objectifs: T du DICT
+  EBIOSAIPD:
+    - Document: NEROS
+      Lien: Lien vers les exigences de sécurité
+    - Document: EBIOS
+      Lien: Lien vers l'étude EBIOS
+    - Document: AIPD
+      Lien: Lien vers l'étude AIPD
+  PeriodeService:
+    - Période: Standard
+      Début: Tmp début
+      Fin: Tmp fin
+      NBC: nb NBC
+      NBS: nb NBS
+    - Période: Charge
+      Début: Tmp début
+      Fin: Tmp fin
+      NBC: nb NBC
+      NBS: nb NBS
+    - Période: Critique
+      Début: Tmp début
+      Fin: Tmp fin
+      NBC: nb NBC
+      NBS: nb NBS
+  PeriodeServiceCharge:
+    - Description: Description de la charge
+      "": Blabla sur la charge
+  GartantieService:
+    - Application: Plage Service Infogérance
+      Produit: tbd
+      Standard: 5j/7 - 9h - 18h
+    - Application: Perte de Données Maximale Admissible
+      Produit: tbd
+      Standard: 24 H
+    - Application: Durée Maximale d'Interruption Admissible
+      Produit: tbd
+      Standard: 24 H
+    - Application: Durée de Rétention
+      Produit: tbd
+      Standard: "180j"
+  GarantieServiceImpact:
+    - Impact: Impact Métier en cas de perte de données
+      Description: Blabla sur la perte de données
+    - Impact: Impact Métier en cas de défaillance du service
+      Description: Blabla sur la défaillance du service
+  Performance:
+    - Temps de Reponse: Affichage page d'accueil
+      Standard: T en S
+      Charge: T en S
+    - Temps de Reponse: Affichage page simple
+      Standard: T en S
+      Charge: T en S
+    - Temps de Reponse: Affichage page complexe
+      Standard: T en S
+      Charge: T en S
+    - Temps de Reponse: Affichage page requête simple
+      Standard: T en S
+      Charge: T en S
+    - Temps de Reponse: Affichage page requête complexe
+      Standard: T en S
+      Charge: T en S
+  Exploitabilité:
+    - Batch: "Nom du traitement"
+      Plage: "Plage d'exécution"
+      Fréquence: "Fréquence d'exécution"
+      Impact Métier: nb NBC
+      Impact Charge: nb NBS
+    - Batch: "Nom du traitement"
+      Plage: "Plage d'exécution"
+      Fréquence: "Fréquence d'exécution"
+      Impact Métier: nb NBC
+      Impact Charge: nb NBS
+  ExploitabiliteImpact:
+    - Impact: "Impact Métier en cas d'anomalie lors du traitement"
+      Description: "Aucun impact"
+    - Impact: "Impact Charge sur la performance du service lors du traitement"
+      Description: "Aucun impact"
+SchemaArchitecture:
+  ArchiActeurProcessus: |
+    graph LR;
+    utilisateur1[Famille Utilisateur 1]
+    utilisateur2[Famille Utilisateur 2]
+    utilisateur3[Famille Utilisateur 3]
+    produit[Produit startup]
+    subgraph "Produit"
+    produit
+    end
+    utilisateur1-->produit;
+    utilisateur2-->produit;
+    utilisateur3-->produit;
+    produit-->service;
+  ArchiFonctionnel: |
+    graph TD;
+    utilisateur1[Famille Utilisateur 1]
+    utilisateur2[Famille Utilisateur 2]
+    utilisateur3[Famille Utilisateur 3]
+    fonc1[Fonctionnalité 1]
+    fonc2[Fonctionnalité 2]
+    fonc3[Fonctionnalité 3]
+    subgraph "Produit de la startup"
+    fonc1
+    fonc2
+    fonc3
+    end
+    utilisateur1-->fonc1;
+    utilisateur2-->fonc1;
+    utilisateur2-->fonc2;
+    utilisateur2-->fonc3;
+    utilisateur3-->fonc3;
+  ArchiApplicative: |
+    graph TD;
+    utilisateur1[Famille Utilisateur 1]
+    utilisateur2[Famille Utilisateur 2]
+    utilisateur3[Famille Utilisateur 3]
+    fonc1[Fonctionnalité 1]
+    fonc2[Fonctionnalité 2]
+    fonc3[Fonctionnalité 3]
+    nodejs[NodeJS]
+    hasura[Hasura]
+    pg[PostgreSQL]
+    subgraph " Produit de la Statup"
+    fonc1
+    fonc2
+    fonc3
+    subgraph "POD APP"
+    nodejs
+    end
+    subgraph "POD API"
+    hasura
+    end
+    end
+    utilisateur1-->fonc1;
+    utilisateur2-->fonc2;
+    utilisateur3-->fonc1;
+    utilisateur3-->fonc2;
+    utilisateur3-->fonc3;
+    fonc1-->nodejs
+    fonc2-->nodejs
+    fonc3-->nodejs
+    nodeJS-->hasura
+    hasura-->pg
+  ArchiTechnique: |
+    graph LR;
+    utilisateur[Utilisateurs];
+    firewall[Firewall];
+    waf[WAF];
+    frontend[Frontend];
+    api[API];
+    api-entreprise[API entreprise];
+    postgresql[PostgreSQL];
+    backups[Sauvegarde];
+    subgraph "Azure"
+    subgraph "Kubernetes"
+    subgraph "plateforme"
+    firewall
+    waf
+    end
+    subgraph "Namespace produit"
+    frontend
+    api
+    end 
+    end
+    postgresql
+    backups
+    end
+    utilisateur-->|1.1|firewall;
+    firewall-->|1.2|waf;
+    waf-->|1|frontend;
+    frontend-->|2|api;
+    api-->|3|api-entreprise;
+    api-->|4|postgresql;
+    postgresql-->backups;
+ServeursComposants:
+  Serveur1:
+    RessourcesServeur1:
+      - Nom: Nom du serveur
+        Type: Container
+        Rôle: "Rôle du service"
+        CPU: "200 mCPU"
+        RAM: "4 Go"
+        Taille image: 50 MB
+        HDD Data: ""
+    Serveur1Composants:
+      - Catégorie: O.S.
+        Composant: CentOS
+        Version: "7.5"
+        Rôle: ""
+      - Catégorie: RP
+        Composant: Ngnix
+        Version: "1.15"
+        Rôle: Reverse Proxy
+  Serveur2:
+    RessourcesServeur2:
+      - Nom: Nom du Serveur
+        Type: Container
+        Rôle: "Rôle du service"
+        CPU: "2"
+        RAM: 4 Go
+        Taille image: 500 MB
+        HDD Data: ""
+    Serveur2Composants:
+      - Catégorie: O.S.
+        Composant: CentOS
+        Version: "7.5"
+        Rôle: ""
+      - Catégorie: RP
+        Composant: Ngnix
+        Version: "1.15"
+        Rôle: Reverse Proxy
+MatriceFlux:
+  MatriceFluxProduit:
+    - N° flux: "1"
+      Source: WAF
+      Destination: Frontend
+      Port: Port du flux
+      Protocole: Protocole du flux
+      Commentaire: Commentaire sur le flux
+    - N° flux: "2"
+      Source: Qui initie le flux
+      Destination: Qui reçoit le flux
+      Port: Port du flux
+      Protocole: Protocole du flux
+      Commentaire: Commentaire sur le flux
+    - N° flux: "3"
+      Source: Qui initie le flux
+      Destination: Qui reçoit le flux
+      PortFlux: Port du flux
+      Protocole: Protocole du flux
+      Commentaire: Commentaire sur le flux
+    - N° flux: "4"
+      Source: Qui initie le flux
+      Destination: Qui reçoit le flux
+      Port: Port du flux
+      Protocole: Protocole du flux
+      Commentaire: Commentaire sur le flux
+    - N° flux: "5"
+      Source: Qui initie le flux
+      Destination: Qui reçoit le flux
+      Port: Port du flux
+      Protocole: Protocole du flux
+      Commentaire: Commentaire sur le flux
+    - N° flux: "6"
+      Source: Qui initie le flux
+      Destination: Qui reçoit le flux
+      Port: Port du flux
+      Protocole: Protocole du flux
+      Commentaire: Commentaire sur le flux
+    - N° flux: "7"
+      Source: Qui initie le flux
+      Destination: Qui reçoit le flux
+      Port: Port du flux
+      Protocole: Protocole du flux
+      Commentaire: Commentaire sur le flux
+    - N° flux: "8"
+      Source: Qui initie le flux
+      Destination: Qui reçoit le flux
+      Port: Port du flux
+      Protocole: Protocole du flux
+      Commentaire: Commentaire sur le flux
+    - N° flux: "9"
+      Source: Qui initie le flux
+      Destination: Qui reçoit le flux
+      Port: Port du flux
+      Protocole: Protocole du flux
+      Commentaire: Commentaire sur le flux
+    - N° flux: "10"
+      Source: Qui initie le flux
+      Destination: Qui reçoit le flux
+      Port: Port du flux
+      Protocole: Protocole du flux
+      Commentaire: Commentaire sur le flux
+  MatriceFluxPlateforme:
+    - N° flux: "1.1"
+      Source: Internet
+      Destination: Firewall
+      Port: "80, 443"
+      Protocole: "HTTP, HTTPS"
+      Commentaire: "Internet vers firewall plateforme"
+    - N° flux: "1.2"
+      Source: Firewall
+      Destination: WAF
+      Port: "80, 443"
+      Protocole: "HTTP, HTTPS"
+      Commentaire: "Firewall vers WAF"
+UrlCertificats:
+  PRODURL1:
+    PRODURL1DATA:
+      - URL: renseigner l'URL
+        Nom alternatif: Renseigner les Subject Alternative Name
+        Equipement portant l'URL: " A renseigner"
+    PRODURL1Setting:
+      - Usage: A renseigner
+        SSL: OUI
+        Type certificat: Serveur, Client ou Client + Serveur
+        VIP: OUI
+        LB | RP: RP
+        Terminaison SSL: OUI
+  PRODURL2:
+    PRODURL2DATA:
+      - URL: renseigner l'URL
+        Nom alternatif: Renseigner les Subject Alternative Name
+        Equipement portant l'URL: " A renseigner"
+    PRODURL2Setting:
+      - Usage: A renseigner
+        SSL: OUI
+        Type certificat: Serveur
+        VIP: OUI
+        LB | RP: RP
+        Terminaison SSL: OUI
+Sauvegarde:
+  SauvegardePRODQuotidienne:
+    - Volume: Système
+      Type: "N-A"
+      Rétention: "--"
+    - Volume: DATA
+      Type: "N-A"
+      Rétention: "--"
+    - Volume: BDD
+      Type: "Full"
+      Rétention: "180 jours"
+Supervision:
+  - Nom du serveur: Nom du serveur
+    Spécifique: OUI - NON
+Documentations:
+  - Typologie: Dossier d'Architecture (DA)
+    Emplacement: Lien vers le document
+  - Typologie: Dossier d'INstallation (DIN)
+    Emplacement: Lien vers le document
+  - Typologie: Dossier d'EXploitation
+    Emplacement: Lien vers le document
+  - Typologie: DROP
+    Emplacement: Lien vers le document
+  - Typologie: Fiche Arrêt - Relance
+    Emplacement: Lien vers le document
+  - Typologie: Fiche supervision
+    Emplacement: Lien vers le document
+  - Typologie: Fiche de sauvegarde
+    Emplacement: Lien vers le document
+Lifecycle:
+  - Date: Date
+    Entité: Qui
+    Observation: Observation
