@@ -1,15 +1,8 @@
 {
-  "name": "dat",
+  "name": "@socialgouv/dat",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.4.0",
-    "@types/node": "^16.11.21",
-    "@types/react": "^17.0.38",
-    "@types/react-dom": "^17.0.11",
     "codemirror": "^5.65.1",
     "mermaid": "^8.13.10",
     "react": "^17.0.2",
@@ -45,6 +38,13 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^16.11.21",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
     "@babel/preset-env": "^7.16.11",
     "@types/mermaid": "^8.2.7",
     "babel-plugin-macros": "^3.1.0",
