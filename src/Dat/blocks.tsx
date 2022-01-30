@@ -1,4 +1,33 @@
-import { CSSProperties } from "react";
+import React, { CSSProperties, useEffect, useState } from "react";
+
+import mermaid from "mermaid";
+
+mermaid.initialize({
+  startOnLoad: true,
+});
+
+export const Mermaid = React.memo((props: any) => {
+  const chart = props.chart;
+  let node;
+  useEffect(() => {
+    // tricky mermaid updates
+    if (node.dataset.processed === "true") {
+      mermaid.contentLoaded();
+      node.setAttribute("data-processed", undefined);
+    } else {
+      node.removeAttribute("data-processed");
+      mermaid.contentLoaded();
+      node.setAttribute("data-processed", undefined);
+    }
+  }, [chart]);
+
+  if (!chart) return null;
+  return (
+    <div ref={(e) => (node = e)} className="mermaid">
+      {chart}
+    </div>
+  );
+});
 
 export const BlocTexte = ({ title, children }) => (
   <div

@@ -1,41 +1,41 @@
 import React, { useMemo, CSSProperties, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import mermaid from "mermaid";
-
+//import mermaid from "mermaid";
+//import Mermaid from "react-mermaid2";
 import "./index.css";
 
-import { Block, Table } from "./blocks";
+import { Mermaid, Block, Table } from "./blocks";
 
-mermaid.initialize({
-  startOnLoad: true,
-});
+// mermaid.initialize({
+//   startOnLoad: true,
+// });
 
-const Mermaid = ({ chart }) => {
-  const [initial] = useState(chart);
-  //let node;
-  //   useEf    fect(() => {
-  //     console.log("useEffect", chart);
+// const Mermaid = ({ chart }) => {
+//   const [initial] = useState(chart);
+//   //let node;
+//   //   useEf    fect(() => {
+//   //     console.log("useEffect", chart);
 
-  //     // mermaid.init(node);
-  //     // mermaid.parse(chart);
-  //     // mermaid.contentLoaded();
-  //     // //   mermaid.contentLoaded();
-  //     // mermaid.initialize({});
-  //     // mermaid.contentLoaded();
-  //   }, [chart]);
-  //   const init = (e) => {
-  //     console.log("node", e);
+//   //     // mermaid.init(node);
+//   //     // mermaid.parse(chart);
+//   //     // mermaid.contentLoaded();
+//   //     // //   mermaid.contentLoaded();
+//   //     // mermaid.initialize({});
+//   //     // mermaid.contentLoaded();
+//   //   }, [chart]);
+//   //   const init = (e) => {
+//   //     console.log("node", e);
 
-  //     if (e) {
-  //       node = e;
-  //       //  mermaid.init(e);
-  //       // mermaid.parse(chart);
+//   //     if (e) {
+//   //       node = e;
+//   //       //  mermaid.init(e);
+//   //       // mermaid.parse(chart);
 
-  //       //mermaid.contentLoaded();
-  //     }
-  //   };
-  return <div className="mermaid">{chart}</div>;
-};
+//   //       //mermaid.contentLoaded();
+//   //     }
+//   //   };
+//   return <div className="mermaid">{chart}</div>;
+// };
 
 const Acteurs = ({ Acteurs }) => (
   <Block
