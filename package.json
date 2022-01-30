@@ -19,12 +19,21 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ],
+    "plugins": [
+      "babel-plugin-macros"
     ]
   },
   "browserslist": {
@@ -50,6 +59,8 @@
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
     "babel-plugin-macros": "^3.1.0",
+    "eslint": "^8.8.0",
+    "prettier": "^2.5.1",
     "raw.macro": "^0.4.2",
     "yaml.macro": "^0.1.1"
   }

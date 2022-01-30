@@ -35,7 +35,7 @@ function PreviewEditor() {
         setError(null);
       }
     }
-  }, [debouncedYaml]);
+  }, [debouncedYaml, error]);
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>
