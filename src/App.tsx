@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
+import { useEffect, useState } from "react";
 import { UnControlled as CodeMirror } from "react-codemirror2";
-//@ts-ignore
 import raw from "raw.macro";
 import YAML from "yaml";
+import { useDebounce } from "use-debounce";
 
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
@@ -15,69 +14,79 @@ import "./App.css";
 
 const SAMPLE_YAML = raw("./sample.yaml");
 
-function Editor() {
+function PreviewEditor() {
   const [yaml, setYaml] = useState(SAMPLE_YAML);
   const [error, setError] = useState(null);
-  let parsedYaml = null;
-  try {
-    parsedYaml = YAML.parse(yaml, { prettyErrors: true });
-  } catch (e) {
-    console.log(e);
-    if (!error) {
-      setError(e.message);
-    }
-  }
+  const [debouncedYaml] = useDebounce(yaml, 100);
+  const [parsedYaml, setParsedYaml] = useState(null);
 
-  // console.log("yaml", yaml);
-  // console.log("parsedYaml", parsedYaml);
+  useEffect(() => {
+    let errored = false;
+    try {
+      setParsedYaml(YAML.parse(debouncedYaml, { prettyErrors: true }));
+    } catch (e) {
+      console.log("YAML parse error", e.toString());
+      if (!error) {
+        setError(e.message);
+      }
+      errored = true;
+    } finally {
+      if (error && !errored) {
+        setError(null);
+      }
+    }
+  }, [debouncedYaml]);
+
   return (
-    <div className="App">
-      <div style={{ display: "flex", height: "100vh" }}>
-        <div style={{ flex: "1 1 auto", width: "50%" }}>
-          <CodeMirror
-            autoScroll={false}
-            value={SAMPLE_YAML}
-            options={{
-              mode: "yaml",
-              theme: "material",
-              lineNumbers: true,
-              height: "100%",
-              value: SAMPLE_YAML,
-            }}
-            // onBeforeChange={(editor, data, value, next) => {
-            //   //editor.setState({ value });
-            //   console.log("onBeforeChange", data, value);
-            //   setYaml(value);
-            //   next();
-            // }}
-            onChange={(editor, data, value) => {
-              console.log("onChange", data, value);
-              setYaml(value);
-            }}
-          />
-        </div>
-        <div
-          style={{
-            flex: "1 1 auto",
-            width: "50%",
+    <div style={{ display: "flex", height: "100vh" }}>
+      <div style={{ flex: "1 1 auto", width: "50%" }}>
+        <CodeMirror
+          autoScroll={false}
+          value={SAMPLE_YAML}
+          options={{
+            mode: "yaml",
+            theme: "material",
+            lineNumbers: true,
             height: "100vh",
-            overflow: "scroll",
+            value: SAMPLE_YAML,
           }}
-        >
-          {parsedYaml && <Dat DAT={parsedYaml} />}
-          {error && (
-            <div
-              style={{ padding: 30, fontSize: "1.2em", whiteSpace: "pre-wrap" }}
-            >
-              {error}
-            </div>
-          )}
-        </div>
+          onChange={(editor, data, value) => {
+            setYaml(value);
+          }}
+        />
+      </div>
+      <div
+        style={{
+          flex: "1 1 auto",
+          width: "50%",
+          height: "100vh",
+          overflow: "scroll",
+        }}
+      >
+        {error && (
+          <div
+            style={{
+              position: "sticky",
+              background: "#ff9191",
+              top: 0,
+              padding: 30,
+              fontSize: "1.2em",
+              whiteSpace: "pre-wrap",
+            }}
+          >
+            Error parsing YAML : {error}
+          </div>
+        )}
+        {parsedYaml && <Dat DAT={parsedYaml} />}
       </div>
     </div>
   );
 }
 
-const App = () => <Editor />;
+const App = () => (
+  <div className="App">
+    <PreviewEditor />
+  </div>
+);
 
 export default App;

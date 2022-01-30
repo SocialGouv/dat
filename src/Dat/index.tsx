@@ -1,41 +1,17 @@
-import React, { useMemo, CSSProperties, useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-//import mermaid from "mermaid";
-//import Mermaid from "react-mermaid2";
+import React from "react";
 import "./index.css";
 
 import { Mermaid, Block, Table } from "./blocks";
 
-// mermaid.initialize({
-//   startOnLoad: true,
-// });
+type DatParams = {
+  DAT: Dat.Root;
+};
 
-// const Mermaid = ({ chart }) => {
-//   const [initial] = useState(chart);
-//   //let node;
-//   //   useEf    fect(() => {
-//   //     console.log("useEffect", chart);
-
-//   //     // mermaid.init(node);
-//   //     // mermaid.parse(chart);
-//   //     // mermaid.contentLoaded();
-//   //     // //   mermaid.contentLoaded();
-//   //     // mermaid.initialize({});
-//   //     // mermaid.contentLoaded();
-//   //   }, [chart]);
-//   //   const init = (e) => {
-//   //     console.log("node", e);
-
-//   //     if (e) {
-//   //       node = e;
-//   //       //  mermaid.init(e);
-//   //       // mermaid.parse(chart);
-
-//   //       //mermaid.contentLoaded();
-//   //     }
-//   //   };
-//   return <div className="mermaid">{chart}</div>;
-// };
+const styleBigBlock = {
+  color: "white",
+  fontWeight: "bold",
+  fontSize: "1.4em",
+};
 
 const Acteurs = ({ Acteurs }) => (
   <Block
@@ -189,12 +165,6 @@ const Exigences = ({ Exigences }) => (
   </Block>
 );
 
-const styleBigBlock = {
-  color: "white",
-  fontWeight: "bold",
-  fontSize: "1.4em",
-};
-
 const SchemaArchitecture = ({ SchemaArchitecture }) => (
   <Block
     style={{
@@ -321,7 +291,7 @@ const Documentations = ({ Documentations }) => (
   </Block>
 );
 
-const Lifecycle = ({ Lifecycle }) => (
+const Lifecycle = ({ Lifecycle }: { Lifecycle: Dat.Root["Lifecycle"] }) => (
   <Block
     style={{ backgroundColor: "rgb(74, 68, 43)", ...styleBigBlock }}
     title="Cycle de vie"
@@ -333,34 +303,52 @@ const Lifecycle = ({ Lifecycle }) => (
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { message: "", errorhasError: false };
+    this.state = { message: "", hasError: false };
   }
 
   static getDerivedStateFromError(error) {
-    return { message: error.message, hasError: true };
-  }
+    // make it more readable
+    const message = error.stack
+      .split("\n")
+      .slice(0, 2)
+      .map((s) => s.trim())
+      .join(" ")
+      .replace(/\([^)]+\)$/, "");
 
-  componentDidCatch(error, errorInfo) {
-    console.log(error, errorInfo);
+    return { message, hasError: true };
   }
 
   render() {
-    //@ts-ignore
-    if (this.state.hasError) {
+    return (
       //@ts-ignore
-      return <h3>Invalid YAML : {this.state.message}</h3>;
-    }
-
-    return this.props.children;
+      <React.Fragment key={this.state.errorCount}>
+        {/*@ts-ignore*/}
+        {this.state.hasError ? (
+          <div
+            style={{
+              position: "sticky",
+              background: "#ff9191",
+              top: 0,
+              padding: 30,
+              fontSize: "1.2em",
+              whiteSpace: "pre-wrap",
+            }}
+          >
+            {/*@ts-ignore*/}
+            Error rendering DAT : {this.state.message}
+          </div>
+        ) : (
+          this.props.children
+        )}
+      </React.Fragment>
+    );
   }
 }
 
-// type DatParams = {
-//   DAT: Root;
-// };
-export const Dat = ({ DAT }) => {
+export const Dat = ({ DAT }: DatParams) => {
   return (
-    <ErrorBoundary>
+    /* random key allows to force rerendering the ErrorBoundary */
+    <ErrorBoundary key={Math.random()}>
       <Acteurs {...DAT} />
       <Fonctionnalites {...DAT} />
       <Contraintes {...DAT} />
@@ -374,7 +362,7 @@ export const Dat = ({ DAT }) => {
       <Sauvegarde {...DAT} />
 
       <Documentations {...DAT} />
-      <Lifecycle {...DAT} />
+      <Lifecycle Lifecycle={DAT.Lifecycle} />
     </ErrorBoundary>
   );
 };
