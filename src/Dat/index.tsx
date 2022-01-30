@@ -38,7 +38,13 @@ const Mermaid = ({ chart }) => {
 };
 
 const Acteurs = ({ Acteurs }) => (
-  <Block backgroundColor="rgb(95, 74, 121)" title="Projet - acteurs">
+  <Block
+    style={{
+      backgroundColor: "rgb(95, 74, 121)",
+      ...styleBigBlock,
+    }}
+    title="Projet - acteurs"
+  >
     <Block title="Nom du produit">{Acteurs.NomProjet}</Block>
     <Block title="Contexte  du projet">
       <ul>
@@ -74,7 +80,13 @@ const Acteurs = ({ Acteurs }) => (
 );
 
 const Fonctionnalites = ({ Fonctionnalites }) => (
-  <Block backgroundColor="rgb(119, 145, 65)" title="Fonctionnalites - Données">
+  <Block
+    style={{
+      backgroundColor: "rgb(119, 145, 65)",
+      ...styleBigBlock,
+    }}
+    title="Fonctionnalites - Données"
+  >
     <Table
       title="Fonctionnalites"
       data={Fonctionnalites.FonctionnalitesApplicatif}
@@ -92,7 +104,13 @@ const Fonctionnalites = ({ Fonctionnalites }) => (
 );
 
 const Contraintes = ({ Contraintes }) => (
-  <Block backgroundColor="rgb(225, 108, 34)" title="Contraintes - Volumétrie">
+  <Block
+    style={{
+      backgroundColor: "rgb(225, 108, 34)",
+      ...styleBigBlock,
+    }}
+    title="Contraintes - Volumétrie"
+  >
     <Block title="Contraintes légales">
       <ul>
         {Contraintes.ContraintesLegales.map((o, i) => (
@@ -130,7 +148,10 @@ const Contraintes = ({ Contraintes }) => (
 
 const Exigences = ({ Exigences }) => (
   <Block
-    backgroundColor="rgb(146, 55, 54)"
+    style={{
+      backgroundColor: "rgb(146, 55, 54)",
+      ...styleBigBlock,
+    }}
     title="Exigences non fonctionnelles"
   >
     <Block title="Exigences de sécurité">
@@ -168,8 +189,20 @@ const Exigences = ({ Exigences }) => (
   </Block>
 );
 
+const styleBigBlock = {
+  color: "white",
+  fontWeight: "bold",
+  fontSize: "1.4em",
+};
+
 const SchemaArchitecture = ({ SchemaArchitecture }) => (
-  <Block backgroundColor="rgb(74, 68, 43)" title="Schémas d'architecture">
+  <Block
+    style={{
+      backgroundColor: "rgb(74, 68, 43)",
+      ...styleBigBlock,
+    }}
+    title="Schémas d'architecture"
+  >
     <Block title="Architecture Acteurs & Processus">
       <Mermaid chart={SchemaArchitecture.ArchiActeurProcessus} />
     </Block>
@@ -189,7 +222,7 @@ const SchemaArchitecture = ({ SchemaArchitecture }) => (
 
 const ServeursComposants = ({ ServeursComposants }) => (
   <Block
-    backgroundColor="rgb(74, 68, 43)"
+    style={{ backgroundColor: "rgb(74, 68, 43)", ...styleBigBlock }}
     title="Serveurs & Composants applicatifs"
   >
     <Block title="Serveur 1">
@@ -217,7 +250,7 @@ const ServeursComposants = ({ ServeursComposants }) => (
 
 const MatricesFlux = ({ MatriceFlux }) => (
   <Block
-    backgroundColor="rgb(74, 68, 43)"
+    style={{ backgroundColor: "rgb(74, 68, 43)", ...styleBigBlock }}
     title="Matrices des flux applicatifs & système"
   >
     <Block title="Matrices de flux applicative">
@@ -236,7 +269,10 @@ const MatricesFlux = ({ MatriceFlux }) => (
 );
 
 const UrlCertificats = ({ UrlCertificats }) => (
-  <Block backgroundColor="rgb(74, 68, 43)" title="URLs & Certificats">
+  <Block
+    style={{ backgroundColor: "rgb(74, 68, 43)", ...styleBigBlock }}
+    title="URLs & Certificats"
+  >
     <Block title="PRODUCTION">
       <Block title="URL 1">
         <Table
@@ -263,7 +299,10 @@ const UrlCertificats = ({ UrlCertificats }) => (
 );
 
 const Sauvegarde = ({ Sauvegarde }) => (
-  <Block backgroundColor="rgb(74, 68, 43)" title="Sauvegarde">
+  <Block
+    style={{ backgroundColor: "rgb(74, 68, 43)", ...styleBigBlock }}
+    title="Sauvegarde"
+  >
     <Block title="Sauvegarde PRODUCTION  quotidienne">
       <Table
         title="Schéma acteurs & processus"
@@ -274,13 +313,19 @@ const Sauvegarde = ({ Sauvegarde }) => (
 );
 
 const Documentations = ({ Documentations }) => (
-  <Block backgroundColor="rgb(74, 68, 43)" title="Documentations">
+  <Block
+    style={{ backgroundColor: "rgb(74, 68, 43)", ...styleBigBlock }}
+    title="Documentations"
+  >
     <Table title="Schéma acteurs & processus" data={Documentations} />
   </Block>
 );
 
 const Lifecycle = ({ Lifecycle }) => (
-  <Block backgroundColor="rgb(74, 68, 43)" title="Cycle de vie">
+  <Block
+    style={{ backgroundColor: "rgb(74, 68, 43)", ...styleBigBlock }}
+    title="Cycle de vie"
+  >
     <Table title="Observation MOE" data={Lifecycle} />
   </Block>
 );

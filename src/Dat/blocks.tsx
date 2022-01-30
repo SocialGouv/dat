@@ -15,25 +15,29 @@ export const BlocTexte = ({ title, children }) => (
   </div>
 );
 
-export const Block = ({ title, backgroundColor = "#333", children }) => (
-  <div style={{ border: `1px solid ${backgroundColor}`, margin: 5 }}>
-    <div
-      style={{
-        border: `1px solid ${backgroundColor}`,
-        backgroundColor,
-        color: "white",
-        //height: 40,
-        fontSize: "1.2em",
-        //lineHeight: "40px",
-        // color: "white",
-        padding: 10,
-      }}
-    >
-      {title}
+export const Block = ({ title, style = {}, children }) => {
+  const styles = {
+    backgroundColor: "#CCC",
+    color: "#333",
+    ...style,
+  };
+
+  return (
+    <div style={{ border: `1px solid ${styles.backgroundColor}`, margin: 5 }}>
+      <div
+        style={{
+          border: `1px solid ${styles.backgroundColor}`,
+          fontSize: "1.2em",
+          padding: 10,
+          ...styles,
+        }}
+      >
+        {title}
+      </div>
+      <div style={{ padding: 10, background: "#f2eff5" }}>{children}</div>
     </div>
-    <div style={{ padding: 10, background: "#f2eff5" }}>{children}</div>
-  </div>
-);
+  );
+};
 
 const formatCell = (value) => {
   if (value === true) {
