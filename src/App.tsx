@@ -28,12 +28,8 @@ function Editor() {
     }
   }
 
-  /*useEffect(() => {
-    console.log("yaml", yaml);
-    parsedYaml = YAML.parse(yaml, { prettyErrors: true });
-  }, [yaml]);*/
-  console.log("yaml", yaml);
-  console.log("parsedYaml", parsedYaml);
+  // console.log("yaml", yaml);
+  // console.log("parsedYaml", parsedYaml);
   return (
     <div className="App">
       <div style={{ display: "flex", height: "100vh" }}>

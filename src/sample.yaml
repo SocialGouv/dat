@@ -1,101 +1,7 @@
 #
 # testez votre diagramme mermaid sur https://mermaid.live/edit
 #
-SchemaArchitecture:
-  ArchiActeurProcessus: |
-    graph LR;
-    utilisateur1[Famille Utilisateur 1]
-    utilisateur2[Famille Utilisateur 2]
-    utilisateur3[Famille Utilisateur 3]
-    produit[Produit startup]
-    subgraph "Produit"
-    produit
-    end
-    utilisateur1-->produit;
-    utilisateur2-->produit;
-    utilisateur3-->produit;
-    produit-->service;
-  ArchiFonctionnel: |
-    graph TD;
-    utilisateur1[Famille Utilisateur 1]
-    utilisateur2[Famille Utilisateur 2]
-    utilisateur3[Famille Utilisateur 3]
-    fonc1[Fonctionnalité 1]
-    fonc2[Fonctionnalité 2]
-    fonc3[Fonctionnalité 3]
-    subgraph "Produit de la startup"
-    fonc1
-    fonc2
-    fonc3
-    end
-    utilisateur1-->fonc1;
-    utilisateur2-->fonc1;
-    utilisateur2-->fonc2;
-    utilisateur2-->fonc3;
-    utilisateur3-->fonc3;
-  ArchiApplicative: |
-    graph TD;
-    utilisateur1[Famille Utilisateur 1]
-    utilisateur2[Famille Utilisateur 2]
-    utilisateur3[Famille Utilisateur 3]
-    fonc1[Fonctionnalité 1]
-    fonc2[Fonctionnalité 2]
-    fonc3[Fonctionnalité 3]
-    nodejs[NodeJS]
-    hasura[Hasura]
-    pg[PostgreSQL]
-    subgraph " Produit de la Statup"
-    fonc1
-    fonc2
-    fonc3
-    subgraph "POD APP"
-    nodejs
-    end
-    subgraph "POD API"
-    hasura
-    end
-    end
-    utilisateur1-->fonc1;
-    utilisateur2-->fonc2;
-    utilisateur3-->fonc1;
-    utilisateur3-->fonc2;
-    utilisateur3-->fonc3;
-    fonc1-->nodejs
-    fonc2-->nodejs
-    fonc3-->nodejs
-    nodeJS-->hasura
-    hasura-->pg
-  ArchiTechnique: |
-    graph LR;
-    utilisateur[Utilisateurs];
-    firewall[Firewall];
-    waf[WAF];
-    frontend[Frontend];
-    api[API];
-    api-entreprise[API entreprise];
-    postgresql[PostgreSQL];
-    backups[Sauvegarde];
-    subgraph "Azure"
-    subgraph "Kubernetes"
-    subgraph "plateforme"
-    firewall
-    waf
-    end
-    subgraph "Namespace produit"
-    frontend
-    api
-    end 
-    end
-    postgresql
-    backups
-    end
-    utilisateur-->|1.1|firewall;
-    firewall-->|1.2|waf;
-    waf-->|1|frontend;
-    frontend-->|2|api;
-    api-->|3|api-entreprise;
-    api-->|4|postgresql;
-    postgresql-->backups;
+
 Acteurs:
   NomProjet: Usine de développement
   ContexteProjet: # commentaires sur le contexte
@@ -384,7 +290,101 @@ Exigences:
       Description: "Aucun impact"
     - Impact: "Impact Charge sur la performance du service lors du traitement"
       Description: "Aucun impact"
-
+SchemaArchitecture:
+  ArchiActeurProcessus: |
+    graph LR;
+    utilisateur1[Famille Utilisateur 1]
+    utilisateur2[Famille Utilisateur 2]
+    utilisateur3[Famille Utilisateur 3]
+    produit[Produit startup]
+    subgraph "Produit"
+    produit
+    end
+    utilisateur1-->produit;
+    utilisateur2-->produit;
+    utilisateur3-->produit;
+    produit-->service;
+  ArchiFonctionnel: |
+    graph TD;
+    utilisateur1[Famille Utilisateur 1]
+    utilisateur2[Famille Utilisateur 2]
+    utilisateur3[Famille Utilisateur 3]
+    fonc1[Fonctionnalité 1]
+    fonc2[Fonctionnalité 2]
+    fonc3[Fonctionnalité 3]
+    subgraph "Produit de la startup"
+    fonc1
+    fonc2
+    fonc3
+    end
+    utilisateur1-->fonc1;
+    utilisateur2-->fonc1;
+    utilisateur2-->fonc2;
+    utilisateur2-->fonc3;
+    utilisateur3-->fonc3;
+  ArchiApplicative: |
+    graph TD;
+    utilisateur1[Famille Utilisateur 1]
+    utilisateur2[Famille Utilisateur 2]
+    utilisateur3[Famille Utilisateur 3]
+    fonc1[Fonctionnalité 1]
+    fonc2[Fonctionnalité 2]
+    fonc3[Fonctionnalité 3]
+    nodejs[NodeJS]
+    hasura[Hasura]
+    pg[PostgreSQL]
+    subgraph " Produit de la Statup"
+    fonc1
+    fonc2
+    fonc3
+    subgraph "POD APP"
+    nodejs
+    end
+    subgraph "POD API"
+    hasura
+    end
+    end
+    utilisateur1-->fonc1;
+    utilisateur2-->fonc2;
+    utilisateur3-->fonc1;
+    utilisateur3-->fonc2;
+    utilisateur3-->fonc3;
+    fonc1-->nodejs
+    fonc2-->nodejs
+    fonc3-->nodejs
+    nodeJS-->hasura
+    hasura-->pg
+  ArchiTechnique: |
+    graph LR;
+    utilisateur[Utilisateurs];
+    firewall[Firewall];
+    waf[WAF];
+    frontend[Frontend];
+    api[API];
+    api-entreprise[API entreprise];
+    postgresql[PostgreSQL];
+    backups[Sauvegarde];
+    subgraph "Azure"
+    subgraph "Kubernetes"
+    subgraph "plateforme"
+    firewall
+    waf
+    end
+    subgraph "Namespace produit"
+    frontend
+    api
+    end 
+    end
+    postgresql
+    backups
+    end
+    utilisateur-->|1.1|firewall;
+    firewall-->|1.2|waf;
+    waf-->|1|frontend;
+    frontend-->|2|api;
+    api-->|3|api-entreprise;
+    api-->|4|postgresql;
+    postgresql-->backups;
 ServeursComposants:
   Serveur1:
     RessourcesServeur1:

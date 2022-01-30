@@ -330,18 +330,42 @@ const Lifecycle = ({ Lifecycle }) => (
   </Block>
 );
 
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { message: "", errorhasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { message: error.message, hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.log(error, errorInfo);
+  }
+
+  render() {
+    //@ts-ignore
+    if (this.state.hasError) {
+      //@ts-ignore
+      return <h3>Invalid YAML : {this.state.message}</h3>;
+    }
+
+    return this.props.children;
+  }
+}
+
 // type DatParams = {
 //   DAT: Root;
 // };
 export const Dat = ({ DAT }) => {
   return (
-    <div className="App">
-      <SchemaArchitecture {...DAT} />
-
+    <ErrorBoundary>
       <Acteurs {...DAT} />
       <Fonctionnalites {...DAT} />
       <Contraintes {...DAT} />
       <Exigences {...DAT} />
+      <SchemaArchitecture {...DAT} />
 
       <ServeursComposants {...DAT} />
       <MatricesFlux {...DAT} />
@@ -351,6 +375,6 @@ export const Dat = ({ DAT }) => {
 
       <Documentations {...DAT} />
       <Lifecycle {...DAT} />
-    </div>
+    </ErrorBoundary>
   );
 };

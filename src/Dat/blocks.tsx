@@ -10,15 +10,12 @@ export const Mermaid = React.memo((props: any) => {
   const chart = props.chart;
   let node;
   useEffect(() => {
-    // tricky mermaid updates
-    if (node.dataset.processed === "true") {
-      mermaid.contentLoaded();
-      node.setAttribute("data-processed", undefined);
-    } else {
+    // handle tricky mermaid rerenders
+    if (node.dataset.processed !== "true") {
       node.removeAttribute("data-processed");
-      mermaid.contentLoaded();
-      node.setAttribute("data-processed", undefined);
     }
+    mermaid.contentLoaded();
+    node.setAttribute("data-processed", undefined);
   }, [chart]);
 
   if (!chart) return null;
