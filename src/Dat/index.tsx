@@ -354,13 +354,10 @@ export const Dat = ({ DAT }: DatParams) => {
       <Contraintes {...DAT} />
       <Exigences {...DAT} />
       <SchemaArchitecture {...DAT} />
-
       <ServeursComposants {...DAT} />
       <MatricesFlux {...DAT} />
       <UrlCertificats {...DAT} />
-
       <Sauvegarde {...DAT} />
-
       <Documentations {...DAT} />
       <Lifecycle Lifecycle={DAT.Lifecycle} />
     </ErrorBoundary>
