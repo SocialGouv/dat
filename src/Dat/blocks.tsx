@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect, useState } from "react";
+import React, { CSSProperties, useEffect } from "react";
 
 import mermaid from "mermaid";
 
@@ -16,7 +16,7 @@ export const Mermaid = React.memo((props: any) => {
     }
     mermaid.contentLoaded();
     node.setAttribute("data-processed", undefined);
-  }, [chart]);
+  }, [chart, node]);
 
   if (!chart) return null;
   return (
