@@ -53,7 +53,7 @@
     "@babel/preset-env": "^7.16.11",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.0.0",
     "@types/jest": "^27.4.0",
     "@types/mermaid": "^8.2.7",
     "@types/node": "^16.11.21",
