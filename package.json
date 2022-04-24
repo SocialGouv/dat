@@ -63,6 +63,6 @@
     "eslint": "^8.8.0",
     "prettier": "^2.5.1",
     "raw.macro": "^0.4.2",
-    "yaml.macro": "^0.1.1"
+    "yaml.macro": "^0.2.0"
   }
 }
