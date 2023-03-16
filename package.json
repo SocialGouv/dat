@@ -62,7 +62,7 @@
     "babel-plugin-macros": "^3.1.0",
     "eslint": "^8.8.0",
     "prettier": "^2.5.1",
-    "raw.macro": "^0.4.2",
+    "raw.macro": "^0.7.0",
     "yaml.macro": "^0.1.1"
   }
 }
